@@ -1,0 +1,611 @@
+<!DOCTYPE html><html class="dark" lang="pt-BR"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#040e21",
+          "surface": "#091326",
+          "inverse-primary": "#3456c1",
+          "fab-blue-deep": "#001F66",
+          "surface-tint": "#b6c4ff",
+          "on-error": "#690005",
+          "on-primary-fixed": "#001550",
+          "fab-blue-vivid": "#0033A0",
+          "gold-brass": "#B8860B",
+          "fab-blue-subtle": "#0E2856",
+          "on-secondary-fixed": "#251a00",
+          "primary-container": "#0033a0",
+          "on-surface-variant": "#c4c5d5",
+          "tertiary": "#59df89",
+          "surface-container-low": "#121b2f",
+          "fab-blue-surface": "#061B40",
+          "primary-fixed": "#dce1ff",
+          "surface-container-highest": "#2b3549",
+          "gold-military": "#DDA700",
+          "secondary-container": "#dba600",
+          "on-tertiary-container": "#35c16f",
+          "status-operational-green": "#00C853",
+          "status-alert-red": "#D50000",
+          "secondary-fixed": "#ffdf9d",
+          "secondary-fixed-dim": "#f7be27",
+          "outline-variant": "#444653",
+          "surface-variant": "#2b3549",
+          "inverse-on-surface": "#273045",
+          "on-primary-container": "#8ea6ff",
+          "status-amber-waiting": "#FFAB00",
+          "on-primary-fixed-variant": "#133ca8",
+          "on-background": "#d9e2fd",
+          "on-error-container": "#ffdad6",
+          "secondary": "#fac12b",
+          "on-tertiary-fixed-variant": "#005228",
+          "on-tertiary-fixed": "#00210d",
+          "surface-container": "#161f33",
+          "outline": "#8e909e",
+          "primary-fixed-dim": "#b6c4ff",
+          "on-secondary-fixed-variant": "#5b4300",
+          "surface-container-high": "#202a3e",
+          "on-primary": "#00277f",
+          "tertiary-fixed-dim": "#59df89",
+          "passenger-reserva": "#FFD600",
+          "error": "#ffb4ab",
+          "on-secondary": "#3f2e00",
+          "on-surface": "#d9e2fd",
+          "surface-dim": "#091326",
+          "error-container": "#93000a",
+          "background": "#091326",
+          "surface-bright": "#30394e",
+          "on-tertiary": "#00391a",
+          "cadet-gray": "#8C9BAE",
+          "tertiary-container": "#004923",
+          "on-secondary-container": "#543e00",
+          "inverse-surface": "#d9e2fd",
+          "status-closed-slate": "#4A5568",
+          "passenger-titular": "#00E676",
+          "pure-white": "#FFFFFF",
+          "tertiary-fixed": "#77fca3",
+          "primary": "#b6c4ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "gutter": "1rem",
+          "space-xl": "2rem",
+          "space-sm": "0.5rem",
+          "margin": "1.5rem",
+          "space-xs": "0.25rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem"
+        },
+        "fontFamily": {
+          "body-md": [
+            "Public Sans"
+          ],
+          "label-sm": [
+            "Public Sans"
+          ],
+          "display-tv": [
+            "Space Grotesk"
+          ],
+          "body-lg": [
+            "Public Sans"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "title-md": [
+            "Public Sans"
+          ],
+          "headline-lg-mobile": [
+            "Space Grotesk"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "label-lg": [
+            "Public Sans"
+          ],
+          "label-md": [
+            "Public Sans"
+          ],
+          "code-flight": [
+            "Space Grotesk"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ]
+        },
+        "fontSize": {
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "700"
+            }
+          ],
+          "display-tv": [
+            "48px",
+            {
+              "lineHeight": "56px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "600"
+            }
+          ],
+          "title-md": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-sm": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.06em",
+              "fontWeight": "700"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "600"
+            }
+          ],
+          "code-flight": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            }
+          ]
+        }
+      },
+    },
+  };</script></head><body class="bg-background text-on-surface font-body-md text-body-md"><main class="w-full bg-background min-h-screen" role="main"><div class="flex flex-col w-full bg-fab-blue-vivid text-pure-white select-none overflow-hidden" style="min-height: 100vh;">
+<!-- HEADER OPERACIONAL COM ALTO CONTRASTE E HORÁRIO ZULU/BRT -->
+<header class="w-full bg-surface-container-lowest px-margin py-space-sm flex items-center justify-between shadow-2xl z-20" role="banner">
+<!-- Logotipo Institucional FAB com Respiro Seguro -->
+<div class="flex items-center space-x-space-md">
+<div class="bg-pure-white p-space-xs rounded-sm shadow-md flex items-center justify-center">
+<img alt="Brasão Oficial da Força Aérea Brasileira" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WTypX3WIrEt9-M3oYdy8aD03QxCZb1jtOkDCOTFiJhpYFK1KNtNhICAiRcWS3u1WsMA4gs3M61eZi26xXLDhbHJcYqn66OB_eyin2Dbp3Kh7-ZJcTtUwsKf2SOugVDPuBCZGYYXHUOgR976BanqakVgi-kM6B9ed6ACS1s7HpKlfI9H_XmDKxQsXRSpPLydddfWV8NPynZu46yoOsiWToJo4xYkUXGYEvvVk3cSSiVGmZRMjnQWg-EwuFn">
+</div>
+<div class="flex flex-col pl-space-xs">
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-pure-white">Correio Aéreo Nacional</span>
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase font-bold">Base Aérea de Brasília • Posto CAN BABR</span>
+</div>
+</div>
+<!-- Status do Terminal e Alerta de Transmissão -->
+<div class="hidden lg:flex items-center space-x-space-md bg-fab-blue-deep px-space-md py-space-xs rounded-sm">
+<span class="relative flex h-3.5 w-3.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-operational-green opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-status-operational-green"></span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-wider uppercase">Canal de Transmissão</span>
+<span class="font-title-md text-title-md text-pure-white tracking-wide uppercase">FID CONCURSO ATIVO</span>
+</div>
+</div>
+<!-- Relógios Militares de Precisão: UTC (ZULU) e BRT (BRASÍLIA) -->
+<div class="flex items-center space-x-space-lg">
+<!-- Hora ZULU -->
+<div class="bg-surface-container-low px-space-md py-space-xs rounded-sm shadow-inner text-right">
+<div class="font-label-sm text-label-sm text-primary tracking-widest font-bold">TEMPO ZULU (UTC)</div>
+<div class="font-code-flight text-headline-md text-pure-white tracking-wider font-bold leading-none" id="relogio-zulu">01:27:53 Z</div>
+</div>
+<!-- Hora BRT -->
+<div class="bg-surface-container px-space-md py-space-xs rounded-sm shadow-inner text-right">
+<div class="font-label-sm text-label-sm text-secondary font-bold tracking-widest">HORA LOCAL (BRT)</div>
+<div class="font-code-flight text-headline-md text-secondary font-bold tracking-wider leading-none" id="relogio-brt">22:27:53</div>
+</div>
+<div class="relative flex items-center group"><button id="btn-exit-tv" type="button" title="Pressione ESC para retornar" class="flex items-center space-x-space-xs bg-fab-blue-deep/60 hover:bg-fab-blue-deep border border-outline-variant/40 hover:border-secondary px-space-sm py-space-xs rounded-sm text-cadet-gray hover:text-pure-white transition-all duration-300 shadow-sm select-none focus-visible:ring-2 focus:outline-none focus-visible:ring-sky-400" aria-keyshortcuts="Escape" aria-label="Sair do Modo Terminal TV e retornar ao painel operacional"><span class="material-symbols-outlined text-title-md text-secondary">logout</span><div class="flex flex-col text-left"><span class="font-label-sm uppercase tracking-wider font-bold leading-none text-pure-white">Sair Modo TV</span><span class="font-label-sm text-cadet-gray tracking-widest leading-none mt-0.5">ESC • PAINEL</span></div><kbd class="hidden md:inline-block px-1 py-0.5 text-[10px] font-code-flight font-bold text-secondary bg-surface-container-lowest/80 rounded border border-outline-variant/50 ml-1">ESC</kbd></button></div></div>
+</header>
+<!-- PAINEL PRINCIPAL: SPLIT SCREEN (35% ESQUERDA | 65% DIREITA) -->
+<div class="flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-space-md p-space-md bg-fab-blue-vivid">
+<!-- COLUNA ESQUERDA: VOOS DO DIA (35%) -->
+<section class="lg:col-span-4 flex flex-col space-y-space-md bg-fab-blue-deep rounded-sm p-space-md shadow-2xl">
+<!-- Cabeçalho da Seção -->
+<div class="flex items-center justify-between pb-space-xs bg-fab-blue-surface px-space-md py-space-sm rounded-sm">
+<div class="flex items-center space-x-space-xs">
+<span class="material-symbols-outlined text-secondary text-headline-md" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+<h2 class="font-headline-sm text-headline-sm uppercase text-pure-white tracking-wide">Voos do Dia</h2>
+</div>
+<span class="font-label-md text-label-md bg-fab-blue-subtle text-pure-white px-space-sm py-0.5 rounded-sm font-bold tracking-widest">
+          ETD / PARTIDAS
+        </span>
+</div>
+<!-- Lista de Voos do Dia -->
+<div class="flex-1 flex flex-col space-y-space-md justify-between">
+<!-- CARD 1: VOO ATIVO EMBARCANDO (CAN-2401 GIG) -->
+<div class="bg-primary-container p-space-md rounded-sm shadow-xl relative overflow-hidden transition-all duration-300">
+<div class="absolute -right-6 -bottom-6 opacity-15">
+<span class="material-symbols-outlined text-pure-white" style="font-size: 140px;">flight</span>
+</div>
+<div class="flex items-start justify-between relative z-10">
+<div>
+<span class="font-code-flight text-headline-sm text-secondary font-bold tracking-widest block">CAN-2401</span>
+<h3 class="font-display-tv text-headline-md text-pure-white font-bold tracking-tight">GIG • RIO DE JANEIRO</h3>
+<p class="font-title-md text-title-md text-on-surface-variant font-medium">Aeronave C-390 Millennium</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase block">Partida</span>
+<span class="font-code-flight text-headline-md text-pure-white font-bold">15:10</span>
+</div>
+</div>
+<!-- Badge de Status Embarcando -->
+<div class="mt-space-md flex items-center justify-between pt-space-xs relative z-10">
+<span class="font-label-md text-label-md text-pure-white uppercase font-bold tracking-wider">Portão 01</span>
+<div class="flex items-center space-x-space-xs bg-status-operational-green px-space-md py-1 rounded-sm shadow-lg animate-pulse">
+<span class="h-3 w-3 rounded-full bg-pure-white"></span>
+<span class="font-label-lg text-label-lg text-surface-container-lowest font-black tracking-widest uppercase">EMBARCANDO</span>
+</div>
+</div>
+</div>
+<!-- CARD 2: VOO CHECK-IN ABERTO (CAN-2402 MAO) -->
+<div class="bg-fab-blue-surface p-space-md rounded-sm shadow-md relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-code-flight text-title-md text-secondary font-bold tracking-widest block">CAN-2402</span>
+<h3 class="font-headline-sm text-headline-sm text-pure-white font-bold tracking-tight">MAO • MANAUS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Aeronave C-130 Hércules</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase block">Partida</span>
+<span class="font-code-flight text-title-md text-pure-white font-bold">16:30</span>
+</div>
+</div>
+<!-- Badge Check-in Aberto -->
+<div class="mt-space-sm flex items-center justify-between pt-space-xs">
+<span class="font-label-md text-label-md text-cadet-gray uppercase font-bold">Portão 02</span>
+<div class="flex items-center space-x-1.5 bg-status-amber-waiting px-space-md py-1 rounded-sm shadow">
+<span class="font-label-lg text-label-lg text-surface-container-lowest font-black tracking-widest uppercase">CHECK-IN ABERTO</span>
+</div>
+</div>
+</div>
+<!-- CARD 3: VOO NO HORÁRIO (CAN-2405 REC) -->
+<div class="bg-fab-blue-surface p-space-md rounded-sm shadow-md relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-code-flight text-title-md text-secondary font-bold tracking-widest block">CAN-2405</span>
+<h3 class="font-headline-sm text-headline-sm text-pure-white font-bold tracking-tight">REC • RECIFE</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Aeronave C-99A</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase block">Partida</span>
+<span class="font-code-flight text-title-md text-pure-white font-bold">13:15</span>
+</div>
+</div>
+<!-- Badge No Horário -->
+<div class="mt-space-sm flex items-center justify-between pt-space-xs">
+<span class="font-label-md text-label-md text-cadet-gray uppercase font-bold">Portão 01</span>
+<div class="flex items-center space-x-1.5 bg-primary-container px-space-md py-1 rounded-sm shadow">
+<span class="font-label-lg text-label-lg text-pure-white font-black tracking-widest uppercase">NO HORÁRIO</span>
+</div>
+</div>
+</div>
+<!-- CARD 4: VOO FECHADO (CAN-2388 BVB) -->
+<div class="bg-surface-container-low opacity-80 p-space-md rounded-sm shadow-md relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-code-flight text-title-md text-outline font-bold tracking-widest block">CAN-2388</span>
+<h3 class="font-headline-sm text-headline-sm text-outline-variant font-bold tracking-tight">BVB • BOA VISTA</h3>
+<p class="font-body-md text-body-md text-outline">Aeronave C-105 Amazonas</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline tracking-widest uppercase block">Partida</span>
+<span class="font-code-flight text-title-md text-outline font-bold">06:00</span>
+</div>
+</div>
+<!-- Badge Fechado -->
+<div class="mt-space-sm flex items-center justify-between pt-space-xs">
+<span class="font-label-md text-label-md text-outline uppercase font-bold">Encerrado</span>
+<div class="flex items-center space-x-1.5 bg-status-closed-slate px-space-md py-1 rounded-sm shadow">
+<span class="font-label-lg text-label-lg text-pure-white font-black tracking-widest uppercase">FECHADO</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- COLUNA DIREITA: CHAMADA PARA EMBARQUE IMEDIATO E MANIFESTO (65%) -->
+<section class="lg:col-span-8 flex flex-col space-y-space-md bg-fab-blue-deep rounded-sm p-space-md shadow-2xl">
+<!-- HERO DE EMBARQUE IMEDIATO (DESTAQUE MONUMENTAL) -->
+<div class="bg-surface-container-lowest p-space-md rounded-sm shadow-2xl flex flex-col space-y-space-sm">
+<!-- Faixa de Aviso e Alerta de Embarque -->
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<div class="flex items-center space-x-space-sm">
+<span class="flex h-4 w-4 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-operational-green opacity-90"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-status-operational-green"></span>
+</span>
+<span class="font-headline-md text-headline-md font-bold uppercase tracking-wider text-pure-white">
+              CHAMADA PARA EMBARQUE IMEDIATO
+            </span>
+</div>
+<!-- Banner Pulsante: EMBARQUE AUTORIZADO -->
+<div class="animate-pulse bg-status-operational-green px-space-lg py-1.5 rounded-sm shadow-xl flex items-center space-x-space-xs">
+<span class="material-symbols-outlined text-surface-container-lowest font-black" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+<span class="font-headline-sm text-headline-sm text-surface-container-lowest font-black uppercase tracking-widest">
+              EMBARQUE AUTORIZADO • DIRIJA-SE AO PORTÃO
+            </span>
+</div>
+</div>
+<!-- Dados da Missão Ativa -->
+<div class="bg-fab-blue-vivid p-space-md rounded-sm flex flex-col md:flex-row items-center justify-between shadow-inner">
+<div class="flex flex-col mb-space-sm md:mb-0">
+<span class="font-label-md text-label-md text-secondary uppercase font-bold tracking-widest">Voo em Convocação Nominal</span>
+<div class="flex items-center space-x-space-md mt-1">
+<span class="font-code-flight text-headline-lg text-secondary font-black tracking-widest">CAN-2401</span>
+<span class="text-headline-md text-pure-white font-bold">BRASÍLIA (BSB) ➔ RIO DE JANEIRO (GIG)</span>
+</div>
+</div>
+<div class="flex items-center space-x-space-lg bg-surface-container-lowest px-space-lg py-space-sm rounded-sm">
+<div class="text-center">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-widest block font-bold">PORTÃO</span>
+<span class="font-display-tv text-headline-lg text-status-operational-green font-black leading-none">01</span>
+</div>
+<div class="text-left pl-space-sm">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-widest block font-bold">AERONAVE / ETD</span>
+<span class="font-code-flight text-title-md text-pure-white font-bold block">C-390 MILLENNIUM</span>
+<span class="font-code-flight text-label-lg text-secondary font-bold">15:10 BRT <span class="text-cadet-gray text-label-sm font-normal">(18:10Z)</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- RELAÇÃO NOMINAL DE PASSAGEIROS (MANIFESTO OFICIAL DE EMBARQUE) -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest rounded-sm p-space-md shadow-xl overflow-hidden">
+<!-- Barra de Identificação do Manifesto -->
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<div class="flex items-center space-x-space-xs">
+<span class="material-symbols-outlined text-secondary">badge</span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-pure-white font-bold tracking-wide">
+              Relação Nominal dos Passageiros Convocados
+            </h3>
+</div>
+<div class="flex items-center space-x-space-md">
+<div class="flex items-center space-x-1.5">
+<span class="h-3 w-3 rounded-full bg-status-operational-green"></span>
+<span class="font-label-sm text-label-sm text-pure-white font-bold tracking-wider">TITULAR (16)</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="h-3 w-3 rounded-full bg-status-amber-waiting"></span>
+<span class="font-label-sm text-label-sm text-pure-white font-bold tracking-wider">RESERVA CONVOCADO (4)</span>
+</div>
+</div>
+</div>
+<!-- Grade de Passageiros em Alto Contraste (Legível a > 10 metros) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm flex-1 overflow-hidden">
+<!-- ITEM 1 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CEL AV</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">MARCOS PONTES</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 2 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">MAJ INT</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">CARVALHO</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 3 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">1º TEN MED</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">VALÉRIA SILVA</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 4 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">1º SGT BMA</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">SOUZA FILHO</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 5 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">SO BCO</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">NOGUEIRA</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 6 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CB BMT</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">LIMA JÚNIOR</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 7 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CIVIL</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">DR. MARCOS VINICIUS COSTA</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 8 -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CAP AV</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">EDUARDO TEIXEIRA</span>
+</div>
+<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              TITULAR
+            </span>
+</div>
+<!-- ITEM 9: RESERVA CONVOCADO -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md ring-1 ring-status-amber-waiting/40">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">2º SGT SGS</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">FERREIRA GOMES</span>
+</div>
+<span class="bg-status-amber-waiting text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              RESERVA CONVOCADO
+            </span>
+</div>
+<!-- ITEM 10: RESERVA CONVOCADO -->
+<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md ring-1 ring-status-amber-waiting/40">
+<div class="flex items-center space-x-space-sm min-w-0">
+<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">3º SGT BCT</span>
+<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">ALINE MEDEIROS</span>
+</div>
+<span class="bg-status-amber-waiting text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
+              RESERVA CONVOCADO
+            </span>
+</div>
+</div>
+<!-- Instruções de Bagagem e Identificação -->
+<div class="mt-space-sm pt-space-xs bg-fab-blue-surface px-space-md py-space-xs rounded-sm flex items-center justify-between text-cadet-gray font-label-md text-label-md">
+<div class="flex items-center space-x-space-xs">
+<span class="material-symbols-outlined text-secondary text-title-md">luggage</span>
+<span class="">Apresentar documento de identidade com foto e cartão de embarque digital ou impresso.</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="font-bold text-pure-white">Franquia de Bagagem:</span>
+<span class="">1 volume até 20kg + bagagem de mão 5kg</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RODAPÉ INSTITUCIONAL COM TICKER E SLOGAN OFICIAL -->
+<footer class="w-full bg-surface-container-lowest px-margin py-space-sm flex flex-col md:flex-row items-center justify-between shadow-2xl z-20">
+<!-- Slogan Oficial da Força Aérea Brasileira -->
+<div class="flex items-center space-x-space-sm">
+<span class="material-symbols-outlined text-secondary text-title-md" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-lg text-label-lg tracking-widest text-pure-white font-bold uppercase">
+        FORÇA AÉREA BRASILEIRA • ASAS QUE PROTEGEM O PAÍS • CORREIO AÉREO NACIONAL
+      </span>
+</div>
+<!-- Ticker Operacional / Atualização em Tempo Real -->
+<div class="flex items-center space-x-space-sm mt-space-xs md:mt-0 text-cadet-gray font-label-md text-label-md">
+<span class="h-2.5 w-2.5 rounded-full bg-status-operational-green"></span>
+<span class="">SISTEMA SISCAN OPERANDO EM REDE TÁTICA</span>
+<span class="text-secondary">•</span>
+<span class="text-pure-white">ATUALIZAÇÃO AUTOMÁTICA EM VIGOR</span>
+</div>
+</footer>
+<div id="tv-modal-alert" class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-sm hidden items-center justify-center"><div class="bg-surface-container border border-secondary p-space-lg rounded-sm shadow-2xl text-center max-w-sm mx-4"><span class="material-symbols-outlined text-secondary text-[40px] block mx-auto mb-space-xs">desktop_access_disabled</span><h4 class="font-headline-sm uppercase text-pure-white font-bold mb-space-xs">Sair do Modo TV</h4><p class="font-body-md text-on-surface-variant mb-space-md">Retornando ao Painel Operacional de Despacho Babr...</p><div class="flex justify-center gap-space-sm"><button id="btn-confirm-exit" class="px-space-md py-space-xs bg-primary-container hover:bg-fab-blue-vivid text-pure-white font-label-md font-bold uppercase rounded-sm transition-all">Confirmar (ESC)</button><button id="btn-cancel-exit" class="px-space-md py-space-xs bg-surface-container-high hover:bg-surface-container-highest text-cadet-gray font-label-md font-bold uppercase rounded-sm transition-all">Continuar no Painel TV</button></div></div></div></div>
+<script>
+  // Relógio com Sincronismo de Alta Precisão (ZULU e BRT)
+  function atualizarRelogiosMilitares() {
+    const agora = new Date();
+
+    // Formatação Horário ZULU (UTC)
+    const horasUtc = String(agora.getUTCHours()).padStart(2, '0');
+    const minutosUtc = String(agora.getUTCMinutes()).padStart(2, '0');
+    const segundosUtc = String(agora.getUTCSeconds()).padStart(2, '0');
+    const elementoZulu = document.getElementById('relogio-zulu');
+    if (elementoZulu) {
+      elementoZulu.textContent = `${horasUtc}:${minutosUtc}:${segundosUtc} Z`;
+    }
+
+    // Formatação Horário Local Brasília (UTC-3)
+    const opcoesBrt = {
+      timeZone: 'America/Sao_Paulo',
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    };
+    const formatadorBrt = new Intl.DateTimeFormat('pt-BR', opcoesBrt);
+    const elementoBrt = document.getElementById('relogio-brt');
+    if (elementoBrt) {
+      elementoBrt.textContent = formatadorBrt.format(agora);
+    }
+  }
+
+  // Executa imediatamente e registra o intervalo regular
+  atualizarRelogiosMilitares();
+  setInterval(atualizarRelogiosMilitares, 1000);
+</script></main>
+
+
+
+
+
+
+
+<script>
+    document.getElementById('btn-exit-tv').addEventListener('click', () => {
+        window.location.href = '/';
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            window.location.href = '/';
+        }
+    });
+</script>
+</body></html>
