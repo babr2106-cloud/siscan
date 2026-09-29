@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SisCAN - Sistema Integrado de Gestão e Embarque (FAB)</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Space Grotesk / Public Sans / JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "gold-military": "#DDA700",
+          "surface": "#091326",
+          "inverse-primary": "#3456c1",
+          "error": "#ffb4ab",
+          "status-alert-red": "#D50000",
+          "primary-fixed": "#dce1ff",
+          "fab-blue-subtle": "#0E2856",
+          "status-amber-waiting": "#FFAB00",
+          "primary-container": "#0033a0",
+          "on-primary-fixed-variant": "#133ca8",
+          "background": "#091326",
+          "on-background": "#d9e2fd",
+          "tertiary": "#59df89",
+          "surface-container-lowest": "#040e21",
+          "on-error": "#690005",
+          "secondary-fixed-dim": "#f7be27",
+          "passenger-titular": "#00E676",
+          "on-primary": "#00277f",
+          "secondary-fixed": "#ffdf9d",
+          "on-primary-fixed": "#001550",
+          "on-surface-variant": "#c4c5d5",
+          "outline": "#8e909e",
+          "surface-variant": "#2b3549",
+          "tertiary-fixed-dim": "#59df89",
+          "on-tertiary-container": "#35c16f",
+          "pure-white": "#FFFFFF",
+          "on-tertiary": "#00391a",
+          "gold-brass": "#B8860B",
+          "fab-blue-surface": "#061B40",
+          "on-error-container": "#ffdad6",
+          "status-operational-green": "#00C853",
+          "status-closed-slate": "#4A5568",
+          "secondary-container": "#dba600",
+          "on-secondary-container": "#543e00",
+          "surface-tint": "#b6c4ff",
+          "cadet-gray": "#8C9BAE",
+          "tertiary-container": "#004923",
+          "on-tertiary-fixed": "#00210d",
+          "on-primary-container": "#8ea6ff",
+          "surface-container-high": "#202a3e",
+          "inverse-surface": "#d9e2fd",
+          "fab-blue-vivid": "#0033A0",
+          "tertiary-fixed": "#77fca3",
+          "on-tertiary-fixed-variant": "#005228",
+          "on-surface": "#d9e2fd",
+          "inverse-on-surface": "#273045",
+          "primary": "#b6c4ff",
+          "surface-container-highest": "#2b3549",
+          "surface-container-low": "#121b2f",
+          "on-secondary-fixed-variant": "#5b4300",
+          "error-container": "#93000a",
+          "fab-blue-deep": "#001F66",
+          "primary-fixed-dim": "#b6c4ff",
+          "surface-dim": "#091326",
+          "secondary": "#fac12b",
+          "surface-container": "#161f33",
+          "outline-variant": "#444653",
+          "on-secondary-fixed": "#251a00",
+          "on-secondary": "#3f2e00",
+          "passenger-reserva": "#FFD600",
+          "surface-bright": "#30394e"
+        },
+        borderRadius: {
+          DEFAULT: "0.125rem",
+          lg: "0.25rem",
+          xl: "0.5rem",
+          full: "0.75rem"
+        },
+        spacing: {
+          "space-xl": "2rem",
+          gutter: "1rem",
+          margin: "1.5rem",
+          "space-xs": "0.25rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "space-md": "1rem"
+        },
+        fontFamily: {
+          "headline-sm": ["Space Grotesk"],
+          "display-tv": ["Space Grotesk"],
+          "headline-lg-mobile": ["Space Grotesk"],
+          "label-lg": ["Public Sans"],
+          "headline-md": ["Space Grotesk"],
+          "body-md": ["Public Sans"],
+          "headline-lg": ["Space Grotesk"],
+          "code-flight": ["Space Grotesk"],
+          "title-md": ["Public Sans"],
+          "body-lg": ["Public Sans"],
+          "label-sm": ["Public Sans"],
+          "label-md": ["Public Sans"],
+          sans: ["Public Sans", "sans-serif"],
+          mono: ["JetBrains Mono", "monospace"]
+        },
+        fontSize: {
+          "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+          "display-tv": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+          "label-lg": ["14px", { lineHeight: "18px", letterSpacing: "0.06em", fontWeight: "700" }],
+          "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+          "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+          "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+          "code-flight": ["22px", { lineHeight: "28px", letterSpacing: "0.04em", fontWeight: "700" }],
+          "title-md": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+          "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+          "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "700" }],
+          "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #040e21; }
+    ::-webkit-scrollbar-thumb { background: #202a3e; border-radius: 3px; border: 1px solid #161f33; }
+    ::-webkit-scrollbar-thumb:hover { background: #30394e; }
+    .focus-fab:focus-visible { outline: 2px solid #38bdf8; outline-offset: 1px; }
+    .pulse-dot { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+</style>
+</head>
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased h-screen overflow-hidden flex flex-col selection:bg-primary-container selection:text-pure-white">
+    <!-- ========== TELA DE LOGIN ========== -->
+    <div id="login-screen" class="fixed inset-0 w-screen h-screen z-50 bg-surface text-pure-white flex flex-col items-center justify-center p-6 select-none overflow-hidden">
+        <div class="absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-fab-blue-vivid/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-12 left-10 w-72 h-72 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
+
+        <div class="z-10 flex flex-col items-center mb-8">
+            <div class="w-16 h-16 rounded bg-primary-container text-pure-white flex items-center justify-center mb-4 shadow-lg">
+                <span class="material-symbols-outlined text-[32px]">military_tech</span>
+            </div>
+            <h1 class="font-headline-lg text-3xl font-bold tracking-tight">SisCAN</h1>
+            <p class="font-body-md text-cadet-gray mt-2">Sistema Integrado de Gestão - Correio Aéreo Nacional</p>
+        </div>
+
+        <form id="login-form" class="z-10 w-full max-w-sm bg-surface-container-low border border-surface-container-high rounded-xl p-6 shadow-xl flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm text-cadet-gray uppercase tracking-widest font-bold">Operador</label>
+                <input type="text" id="login-nome" required class="w-full bg-surface-container border border-surface-container-high rounded px-4 py-3 text-pure-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Nome do operador">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm text-cadet-gray uppercase tracking-widest font-bold">Código de Acesso</label>
+                <input type="password" id="login-senha" required class="w-full bg-surface-container border border-surface-container-high rounded px-4 py-3 text-pure-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Senha">
+            </div>
+            <button type="submit" id="btn-login" class="mt-4 w-full bg-primary-container hover:bg-primary-container/80 text-pure-white font-bold py-3 rounded uppercase tracking-wider transition-colors shadow">
+                Acessar Painel
+            </button>
+            <p class="text-center font-label-sm text-[11px] text-cadet-gray mt-2 flex items-center justify-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">shield</span>
+                Acesso Restrito - Tráfego Criptografado
+            </p>
+        </form>
+    </div>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-[9999] flex flex-col gap-2"></div>
+<!-- ======================================================== -->
+<!-- MODAL GLOBAL: CADASTRAR NOVO ADMIN                      -->
+<!-- ======================================================== -->
+<div aria-modal="true" class="fixed inset-0 bg-surface-container-lowest/80 backdrop-blur-md z-50 flex items-center justify-center hidden" id="modal-novo-admin" role="dialog">
+<div class="bg-surface-container-low rounded-xl shadow-2xl w-full max-w-md border border-surface-container-high overflow-hidden">
+<div class="bg-primary-container px-space-md py-space-sm flex items-center justify-between text-pure-white border-b border-primary-container/40">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">person_add</span>
+<h3 class="font-headline-sm text-label-lg tracking-wide uppercase text-pure-white font-bold">Cadastrar Novo Administrador</h3>
+</div>
+<button class="text-pure-white/70 hover:text-pure-white text-xl font-bold leading-none transition-colors p-1" onclick="fecharModalAdmin()">×</button>
+</div>
+<form class="p-space-lg space-y-space-md" id="form-novo-admin" onsubmit="salvarNovoAdmin(event)">
+<div>
+<label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1">Nome Completo</label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray" id="admin-input-nome" placeholder="Ex: Cap Av Marcelo Silva" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1">E-mail Institucional (@fab.mil.br)</label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray font-mono" id="admin-input-email" placeholder="marcelo.silva@fab.mil.br" required="" type="email"/>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div>
+<label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1">SARAM / Matrícula</label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none font-mono placeholder-cadet-gray" id="admin-input-saram" placeholder="6849120" required="" type="text" inputmode="numeric" oninput="this.value = this.value.replace(/\\D/g, '')"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1">Perfil de Acesso</label>
+<select class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer" id="admin-input-cargo">
+<option value="ADMIN">ADMIN (Operador)</option>
+<option class="hidden" id="opt-novo-root" value="ROOT">ROOT (Superusuário)</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div>
+<label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1">Base / Organização Militar</label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray" id="admin-input-om" type="text" value="BABR - Base Aérea de Brasília"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1">Senha de Acesso</label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray font-mono" id="admin-input-senha" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<div class="pt-space-sm flex justify-end gap-space-xs border-t border-surface-container-high">
+<button class="px-space-md py-2 font-label-sm text-label-sm font-semibold text-cadet-gray bg-surface-container rounded hover:bg-surface-container-high border border-surface-container-high transition-colors" onclick="fecharModalAdmin()" type="button">Cancelar</button>
+<button class="px-space-md py-2 font-label-sm text-label-sm font-bold text-pure-white bg-primary-container rounded hover:bg-fab-blue-deep shadow-md transition-colors uppercase tracking-wider" type="submit">Salvar e Conceder Acesso</button>
+</div>
+</form>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- TOP HEADER BAR (CANONICAL MATCH)                          -->
+<!-- ======================================================== -->
+<header id="main-navbar" class="hidden fixed top-0 left-0 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-xl z-40 border-b border-surface-container-high shadow-[0_1px_8px_rgba(0,0,0,0.04)] select-none" id="main-navbar">
+<div class="h-16 w-full px-space-md md:px-space-lg flex items-center justify-between">
+<!-- Left: Brand Logo, SisCAN with Wings & Station Badge -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded bg-primary-container flex items-center justify-center shadow-lg border border-primary/30 shrink-0">
+<span class="material-symbols-outlined text-pure-white text-[22px]">military_tech</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-pure-white leading-none tracking-tight">SisCAN</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-primary font-code-flight text-[10px] font-bold">OPS v5.2</span>
+</div>
+<span class="font-label-sm text-[10px] text-cadet-gray tracking-wider uppercase">CORREIO AÉREO NACIONAL</span>
+</div>
+</div>
+<div class="hidden md:block h-6 w-px bg-surface-container-high mx-space-xs"></div>
+<div class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container border border-surface-container-high/60">
+<span class="font-label-sm text-label-sm text-cadet-gray">ESTAÇÃO:</span>
+<span class="font-label-md text-label-md text-pure-white font-bold">CAN-OPS BABR (SBBR)</span>
+<span class="w-2 h-2 rounded-full bg-status-operational-green ml-space-xs animate-pulse"></span>
+</div>
+</div>
+<!-- Center/Right: Clocks, Link Satellite Telemetry, Profile Selector & Avatar -->
+<div class="flex items-center gap-space-md md:gap-space-lg">
+<!-- Clocks -->
+<div class="hidden sm:flex items-center gap-space-md">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-[10px] text-cadet-gray uppercase tracking-wider">ZULU (UTC)</span>
+<span class="font-code-flight text-label-lg text-pure-white leading-none tracking-wider" id="clock-zulu">01:00:44Z</span>
+</div>
+<div class="h-6 w-px bg-surface-container-high"></div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-[10px] text-gold-military uppercase tracking-wider">LOCAL (BRT)</span>
+<span class="font-code-flight text-label-lg text-gold-military leading-none tracking-wider" id="clock-brt">22:00:44</span>
+</div>
+</div>
+<!-- Link Satélite Badge -->
+<div class="hidden xl:flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container border border-surface-container-high/60 text-cadet-gray font-label-sm text-[11px]">
+<span class="w-2 h-2 rounded-full bg-status-operational-green"></span>
+<span class="uppercase tracking-wider">LINK SATÉLITE ROTEADOR: CAN-NET ACTIVE</span>
+</div>
+<!-- Tactical Profile Selector Pill -->
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container border border-surface-container-high shadow-inner">
+<span class="material-symbols-outlined text-[16px] text-gold-military" id="badge-perfil-shield">shield</span>
+<span class="font-label-sm text-[11px] text-cadet-gray font-bold uppercase hidden sm:inline">PERFIL:</span>
+<select aria-label="Simulador de Perfil de Acesso SisCAN" class="bg-transparent text-gold-military font-label-md text-label-md font-bold border-0 focus:ring-0 cursor-pointer pr-space-xs py-0 outline-none" id="perfil-select" onchange="alterarPerfil(this.value)">
+<option class="bg-surface-container-high text-pure-white font-medium" value="ROOT">ROOT (SUPERUSER)</option>
+<option class="bg-surface-container-high text-pure-white font-medium" value="ADMIN">ADMIN (DESPACHO)</option>
+</select>
+</div>
+<!-- Avatar Button with Pulse -->
+<div class="w-8 h-8 rounded-full bg-fab-blue-vivid flex items-center justify-center text-pure-white shadow-md border border-primary/40 shrink-0" id="top-avatar-circle">
+<span class="material-symbols-outlined text-pure-white text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ======================================================== -->
+<!-- WORKSPACE: SIDEBAR + MAIN CONTENT                         -->
+<!-- ======================================================== -->
+<div class="pt-16 flex-1 flex overflow-hidden hidden" id="app-workspace">
+<!-- ======================================================== -->
+<!-- SIDEBAR (CANONICAL DESIGN SYSTEM & TOKEN MATCH)          -->
+<!-- ======================================================== -->
+<aside class="w-72 bg-surface-container-lowest border-r border-surface-container-high flex-none flex flex-col justify-between select-none z-30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]" id="main-sidebar">
+<div class="flex flex-col overflow-y-auto">
+<!-- Sidebar Header Tile -->
+<div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-low border-b border-surface-container-high">
+<div class="w-2 h-2 rounded-full bg-status-operational-green animate-pulse"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm tracking-wider text-pure-white">CAN·OPS</span>
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase">SISTEMA INTEGRADO</span>
+</div>
+</div>
+<!-- Menu Section: Menu Operacional -->
+<div class="px-space-md py-space-sm">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-widest font-bold">Menu Operacional</span>
+</div>
+<nav aria-label="Menu Operacional SisCAN" class="flex flex-col gap-space-xs px-space-sm">
+<button class="w-full flex items-center gap-space-sm px-space-md py-space-sm rounded text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high hover:text-on-surface transition-colors text-left outline-none focus-visible:ring-2 focus-visible:ring-primary" id="nav-btn-despachante" onclick="navigateTo('tela-despachante')">
+<span class="material-symbols-outlined text-[20px] text-primary">flight_takeoff</span>
+<span class="">Gestão de Voos (Despacho)</span>
+</button>
+<button class="w-full flex items-center gap-space-sm px-space-md py-space-sm rounded text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high hover:text-on-surface transition-colors text-left outline-none focus-visible:ring-2 focus-visible:ring-primary" id="nav-btn-passageiros" onclick="navigateTo('tela-passageiros')">
+<span class="material-symbols-outlined text-[20px] text-primary">group</span>
+<span class="">Cadastro de Passageiros</span>
+</button>
+<button class="w-full flex items-center gap-space-sm px-space-md py-space-sm rounded text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high hover:text-on-surface transition-colors text-left outline-none focus-visible:ring-2 focus-visible:ring-primary" id="nav-btn-aeronaves" onclick="navigateTo('tela-aeronaves')">
+<span class="material-symbols-outlined text-[20px] text-primary">connecting_airports</span>
+<span class="">Cadastro de Aeronaves</span>
+</button>
+<button class="w-full flex items-center gap-space-sm px-space-md py-space-sm rounded text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high hover:text-on-surface transition-colors text-left outline-none focus-visible:ring-2 focus-visible:ring-primary" id="nav-btn-tv" onclick="ativarModoTV()">
+<span class="material-symbols-outlined text-[20px] text-gold-military">tv</span>
+<span class="flex-1">Abrir Modo TV (Saguão)</span>
+<span class="material-symbols-outlined text-[16px] text-cadet-gray">open_in_new</span>
+</button>
+<div class="my-space-xs mx-space-sm h-px bg-surface-container-high"></div>
+<!-- Menu Section: Administração -->
+<span class="px-space-sm py-space-xs font-label-sm text-label-sm text-cadet-gray uppercase tracking-widest font-bold">Administração</span>
+<button aria-current="page" class="w-full flex items-center gap-space-sm px-space-md py-space-sm rounded bg-primary-container text-pure-white font-label-lg text-label-lg shadow-md transition-colors text-left outline-none focus-visible:ring-2 focus-visible:ring-primary" id="nav-btn-admins" onclick="navigateTo('tela-admins')">
+<span class="material-symbols-outlined text-[20px] text-pure-white">admin_panel_settings</span>
+<span class="">Gestão de Administradores</span>
+</button>
+<button class="w-full flex items-center gap-space-sm px-space-md py-space-sm rounded text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high hover:text-on-surface transition-colors text-left outline-none focus-visible:ring-2 focus-visible:ring-primary" id="nav-btn-logs" onclick="navigateTo('tela-logs')">
+<span class="material-symbols-outlined text-[20px] text-primary">manage_search</span>
+<span class="">Auditoria de Logs</span>
+</button>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-space-md bg-surface-container-low border-t border-surface-container-high">
+<div class="flex items-center gap-space-sm p-space-sm rounded bg-surface-container border border-surface-container-high/60 shadow-sm">
+<div class="w-9 h-9 rounded bg-primary-container flex items-center justify-center font-bold text-pure-white text-xs font-mono shrink-0 shadow" id="avatar-iniciais">
+<span class="material-symbols-outlined text-[20px] text-pure-white">military_tech</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-md text-label-md text-pure-white truncate font-bold" id="sidebar-user-name">Cel Av Roberto Castro</span>
+<span class="font-label-sm text-label-sm text-gold-military truncate tracking-wider font-bold" id="sidebar-user-role">SUPERUSUÁRIO ROOT</span>
+</div>
+<span class="material-symbols-outlined text-cadet-gray text-[18px]">verified_user</span>
+<button id="btn-logout" class="ml-2 w-8 h-8 rounded bg-surface-container-high hover:bg-status-alert-red text-cadet-gray hover:text-pure-white flex items-center justify-center transition-colors" title="Encerrar Sessão">
+  <span class="material-symbols-outlined text-[16px]">logout</span>
+</button>
+</div>
+<div class="mt-space-xs flex items-center justify-between px-space-xs">
+<span class="font-label-sm text-label-sm text-cadet-gray font-mono">CAN-NET V4.2</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-operational-green animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-status-operational-green uppercase font-bold">Conectado</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ======================================================== -->
+<!-- ÁREA DE CONTEÚDO PRINCIPAL (SPA)                        -->
+<!-- ======================================================== -->
+<main class="flex-1 bg-surface overflow-y-auto px-space-lg py-space-md relative">
+<!-- Ambient glow backdrop decorators -->
+<div class="absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-fab-blue-vivid/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -top-12 left-10 w-72 h-72 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
+<!-- ====================================================== -->
+<!-- TELA 1: GESTÃO DE ADMINISTRADORES                      -->
+<!-- ====================================================== -->
+<section class="flex flex-col w-full pb-space-xl space-y-space-lg" id="tela-admins">
+<!-- Operational Breadcrumb & Telemetry Ticker -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm py-space-xs border-b border-surface-container-high/60">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-space-sm py-0.5 rounded bg-surface-container-high text-gold-military font-label-sm text-label-sm tracking-widest uppercase font-bold">
+            MÓDULO ADMINISTRATIVO
+          </span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase">SEC-AUTH-01</span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-code-flight text-label-sm text-primary uppercase font-bold">GESTÃO DE ACESSOS CAN</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container-high text-cadet-gray font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-status-operational-green"></span>
+<span>CUSTÓDIA CRIPTOGRÁFICA ATIVA</span>
+</div>
+<span class="font-label-sm text-label-sm text-cadet-gray font-mono">SEDE BABR</span>
+</div>
+</div>
+<!-- Page Header Hierarchy & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<h1 class="font-headline-lg text-headline-lg text-pure-white tracking-tight">Gestão de Administradores</h1>
+<p class="font-body-md text-body-md text-cadet-gray">
+            Controle de acessos de segurança, papéis operacionais e hierarquia de operadores do SisCAN.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="hidden sm:flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-container border border-surface-container-high">
+<span class="material-symbols-outlined text-primary text-[20px]">cloud_sync</span>
+<div class="text-left">
+<span class="font-label-sm text-[10px] text-cadet-gray uppercase block">CONEXÃO SIGPES</span>
+<span class="font-label-md text-label-md text-pure-white font-bold font-mono">ONLINE • 0.4ms</span>
+</div>
+</div>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 bg-primary-container hover:bg-fab-blue-deep text-pure-white font-label-lg text-label-lg font-bold rounded shadow-lg transition-all transform active:scale-95 uppercase tracking-wider" id="btn-novo-admin" onclick="abrirModalAdmin()">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Cadastrar Novo Admin</span>
+</button>
+</div>
+</div>
+<!-- Banner Informativo de Perfil Ativo -->
+<div class="p-space-md bg-surface-container-low border-l-4 border-primary rounded border border-surface-container-high flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm shadow-sm" id="banner-perfil-info">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0" id="banner-icon">shield</span>
+<span class="font-body-md text-body-md text-pure-white" id="banner-perfil-msg">
+<strong class="text-pure-white font-bold">Perfil Ativo: ROOT.</strong> Você possui privilégios totais de exclusão e transferência de custódia primária.
+          </span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start sm:self-auto">
+<span class="px-space-sm py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">
+            SEGURANÇA FAB NÍVEL 4
+          </span>
+</div>
+</div>
+<!-- Row with 3 Tactical Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-low border border-surface-container-high/80 rounded-xl p-space-md shadow-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider">Administradores Habilitados</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-pure-white font-bold font-display leading-none" id="metric-admins-count">--</span>
+<span class="font-label-sm text-label-sm text-cadet-gray">usuários ativos</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">manage_accounts</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-surface-container-high/80 rounded-xl p-space-md shadow-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider">Sessões Concorrentes</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-gold-military font-bold font-display leading-none">3</span>
+<span class="font-label-sm text-label-sm text-status-operational-green font-bold">● Ativas Agora</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded bg-secondary-container/20 flex items-center justify-center text-gold-military">
+<span class="material-symbols-outlined text-[22px]">devices</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-surface-container-high/80 rounded-xl p-space-md shadow-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider">Auditoria WORM Ativa</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-sm text-headline-sm text-status-operational-green font-bold font-display leading-none">FIPS 140-2</span>
+<span class="font-label-sm text-label-sm text-cadet-gray">Nível 3</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded bg-tertiary-container/40 flex items-center justify-center text-status-operational-green">
+<span class="material-symbols-outlined text-[22px]">lock</span>
+</div>
+</div>
+</div>
+<!-- Tactical Table Card -->
+<div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl overflow-hidden">
+<!-- Table Header Bar -->
+<div class="px-space-lg py-space-sm bg-surface-container border-b border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-status-operational-green animate-pulse"></span>
+<h2 class="font-label-lg text-label-lg uppercase tracking-wider text-pure-white font-bold">Administradores Habilitados no Sistema</h2>
+</div>
+<span class="font-code-flight text-label-sm text-primary font-bold px-2.5 py-0.5 rounded bg-surface-container-lowest border border-surface-container-high" id="total-admins-badge">-- usuários</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-lowest/80 text-cadet-gray font-label-sm text-label-sm uppercase tracking-wider border-b border-surface-container-high">
+<th class="py-space-sm px-space-md font-bold" scope="col">Administrador / Posto</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">E-mail Institucional</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">SARAM</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">Organização (OM)</th>
+<th class="py-space-sm px-space-md font-bold text-center" scope="col">Nível / Perfil</th>
+<th class="py-space-sm px-space-md font-bold text-right" scope="col">Ações Regulamentares</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-on-surface" id="tbody-admins">
+<!-- Renderizado via JS -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ====================================================== -->
+<!-- TELA 2: AUDITORIA DE LOGS                              -->
+<!-- ====================================================== -->
+<section class="flex flex-col w-full pb-space-xl space-y-space-lg hidden" id="tela-logs">
+<div class="flex flex-wrap items-center justify-between gap-space-sm py-space-xs border-b border-surface-container-high/60">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded bg-surface-container-high text-gold-military font-label-sm text-label-sm tracking-widest uppercase font-bold">
+            MÓDULO ADMINISTRATIVO
+          </span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase">AUDIT-SYS-LOG</span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-code-flight text-label-sm text-primary uppercase font-bold">SHA-256 LEDGER</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container-high text-cadet-gray font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-status-operational-green"></span>
+<span>FLUXO SEGURO NÍVEL-4</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-pure-white tracking-tight">Auditoria de Logs do Sistema</h1>
+<p class="font-body-md text-body-md text-cadet-gray mt-1">Trilha imutável de conformidade de ações administrativas e movimentações de embarque da FAB.</p>
+</div>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 bg-surface-container border border-surface-container-high hover:bg-surface-container-high text-pure-white font-label-lg text-label-lg font-bold rounded shadow-md transition-colors uppercase tracking-wider" onclick="exportarLogsCSV()">
+<span class="material-symbols-outlined text-[18px] text-primary">file_download</span>
+<span>Exportar Relatório</span>
+</button>
+</div>
+<!-- Filtros de Busca -->
+<div class="bg-surface-container-low p-space-md border border-surface-container-high rounded-xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined text-cadet-gray text-[20px] absolute left-3 top-1/2 -translate-y-1/2">search</span>
+<input class="w-full pl-10 pr-space-md py-2 bg-surface border border-surface-container-high text-pure-white font-body-md text-body-md rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray" id="filtro-logs-usuario" oninput="filtrarLogs()" placeholder="Busca por Usuário ou Ação..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm text-cadet-gray">
+<span>Filtrar por:</span>
+<select class="border border-surface-container-high rounded px-space-md py-2 bg-surface text-pure-white font-body-md text-body-md focus:border-primary outline-none cursor-pointer" id="filtro-logs-tipo" onchange="filtrarLogs()">
+<option value="TODOS">Todos os Eventos</option>
+<option value="SEGURANCA">Segurança / Acesso (SEG)</option>
+<option value="DESPACHO">Despacho / Embarque (OPS)</option>
+<option value="CADASTRO">Cadastros de Frota/PAX (CAD)</option>
+</select>
+</div>
+</div>
+<!-- Tabela de Logs -->
+<div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-lowest/80 text-cadet-gray font-label-sm text-label-sm uppercase tracking-wider border-b border-surface-container-high">
+<th class="py-space-sm px-space-md font-bold" scope="col">Data / Hora (BRT)</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">Usuário Responsável</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">Ação Realizada</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">Detalhes Técnicos &amp; Alvo</th>
+<th class="py-space-sm px-space-md font-bold text-center" scope="col">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-on-surface font-mono text-[12px]" id="tbody-logs">
+<!-- Logs dinâmicos -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ====================================================== -->
+<!-- TELA 3: CADASTRO DE PASSAGEIROS                        -->
+<!-- ====================================================== -->
+<section class="flex flex-col w-full pb-space-xl space-y-space-lg hidden" id="tela-passageiros">
+<div class="flex flex-wrap items-center justify-between gap-space-sm py-space-xs border-b border-surface-container-high/60">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded bg-surface-container-high text-gold-military font-label-sm text-label-sm tracking-widest uppercase font-bold">
+            MÓDULO ADMINISTRATIVO
+          </span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase">RISAER-PAX-REG</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-status-operational-green"></span>
+<span>BANCO CENTRAL CAN SINCRONIZADO</span>
+</div>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-pure-white tracking-tight">Cadastro de Passageiros</h1>
+<p class="font-body-md text-body-md text-cadet-gray mt-1">Inclusão cadastral com classificação de postos/graduações da FAB, envelope de peso corporal e contato.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Coluna Esquerda: Lista de Passageiros (4 cols) -->
+<div class="lg:col-span-4 bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl overflow-hidden flex flex-col h-[650px]">
+<div class="px-space-md py-space-sm bg-surface-container border-b border-surface-container-high flex items-center justify-between">
+<h2 class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-pure-white">Passageiros no Banco</h2>
+<span class="font-code-flight text-[11px] font-bold px-2 py-0.5 rounded bg-primary-container/40 text-primary border border-primary/40" id="badge-total-pax">8 Cadastrados</span>
+</div>
+<div class="p-space-sm border-b border-surface-container-high bg-surface-container-lowest">
+<input class="w-full text-body-md px-3 py-1.5 bg-surface-container border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" id="busca-pax-lateral" oninput="filtrarListaLateralPax()" placeholder="Filtrar por nome ou posto..." type="text"/>
+</div>
+<div class="flex-1 overflow-y-auto divide-y divide-surface-container-high" id="lista-passageiros-lateral">
+<!-- Renderizado dinamicamente -->
+</div>
+</div>
+<!-- Coluna Direita: Formulário Completo (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl p-space-lg space-y-space-md">
+<div class="border-b border-surface-container-high pb-space-sm flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-title-md font-bold uppercase tracking-wider text-pure-white">Formulário de Inscrição / Cadastro Cadastral</h2>
+<p class="font-label-sm text-label-sm text-cadet-gray">Preencha os campos regulamentares para emissão do manifesto de transporte militar.</p>
+</div>
+<span class="font-label-sm text-[10px] font-bold px-space-sm py-1 rounded bg-tertiary-container/50 border border-status-operational-green/40 text-status-operational-green uppercase">SARAM / SIGPES Integrado</span>
+</div>
+<form class="space-y-space-md" id="form-novo-passageiro" onsubmit="salvarNovoPassageiro(event)">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">CPF <span class="text-error">*</span></label>
+<input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none" id="pax-cpf" maxlength="14" placeholder="000.000.000-00" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Nome Completo <span class="text-error">*</span></label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" id="pax-nome" placeholder="Ex: Rodrigo Mendonça Albuquerque" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Posto / Graduação (Regra FAB) <span class="text-error">*</span></label>
+<select class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none cursor-pointer" id="pax-posto" required="">
+<option value="">Selecione o Posto / Graduação...</option>
+<option value="Oficial General">Oficial General (Ten Brig / Maj Brig / Brig)</option>
+<option value="Oficial Superior">Oficial Superior (Cel / Ten Cel / Maj)</option>
+<option value="Oficial Intermediário">Oficial Intermediário (Capitão)</option>
+<option value="Oficial Subalterno">Oficial Subalterno (1º Ten / 2º Ten / Asp)</option>
+<option value="Praça Especial">Praça Especial (Cadete / Aluno EPCAR)</option>
+<option value="Praça Graduada">Praça Graduada (SO / 1S / 2S / 3S)</option>
+<option value="Praça">Praça (Cabo / Taifeiro / Soldado)</option>
+<option value="Dependente Militar">Dependente de Militar Autorizado</option>
+<option value="Civil">Civil Credenciado / Autorizado</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Peso Corporal (KG) — Envelope CG <span class="text-error">*</span></label>
+<input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none" id="pax-peso" max="250" min="30" placeholder="Ex: 82" required="" step="1" type="number"/>
+<span class="font-label-sm text-[10px] text-cadet-gray">Métrica obrigatória para cálculo do Centro de Gravidade da aeronave.</span>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Tipo Sanguíneo <span class="text-error">*</span></label>
+<select class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none cursor-pointer" id="pax-sangue" required="">
+<option value="">Selecione...</option>
+<option value="O+">O Positivo (O+)</option>
+<option value="O-">O Negativo (O-)</option>
+<option value="A+">A Positivo (A+)</option>
+<option value="A-">A Negativo (A-)</option>
+<option value="B+">B Positivo (B+)</option>
+<option value="B-">B Negativo (B-)</option>
+<option value="AB+">AB Positivo (AB+)</option>
+<option value="AB-">AB Negativo (AB-)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">E-mail de Contato <span class="text-error">*</span></label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray font-mono" id="pax-email" placeholder="contato@fab.mil.br" required="" type="email"/>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Telefone / WhatsApp Funcional <span class="text-error">*</span></label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" id="pax-telefone" placeholder="(61) 98123-4567" required="" type="tel"/>
+</div>
+</div>
+<div class="hidden p-space-sm bg-tertiary-container/80 border border-status-operational-green text-tertiary-fixed font-body-md text-body-md rounded" id="pax-feedback-msg"></div>
+<div class="pt-space-sm border-t border-surface-container-high flex justify-end">
+<button class="px-space-xl py-2.5 bg-primary-container hover:bg-fab-blue-deep text-pure-white font-label-lg text-label-lg font-bold rounded shadow-lg transition-colors uppercase tracking-wider flex items-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+<span>Salvar Passageiro</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- ====================================================== -->
+<!-- TELA 4: CADASTRO DE AERONAVES                          -->
+<!-- ====================================================== -->
+<section class="flex flex-col w-full pb-space-xl space-y-space-lg hidden" id="tela-aeronaves">
+<div class="flex flex-wrap items-center justify-between gap-space-sm py-space-xs border-b border-surface-container-high/60">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded bg-surface-container-high text-gold-military font-label-sm text-label-sm tracking-widest uppercase font-bold">
+            MÓDULO ADMINISTRATIVO
+          </span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase">FROTA-CAN-FAB</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container text-cadet-gray font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-status-operational-green"></span>
+<span>DISPONIBILIDADE 99.9%</span>
+</div>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-pure-white tracking-tight">Cadastro de Aeronaves</h1>
+<p class="font-body-md text-body-md text-cadet-gray mt-1">Gerenciamento de vetores de transporte aéreo militar, capacidade de assentos e limites operacionais de payload.</p>
+</div>
+<!-- Tabela de Aeronaves -->
+<div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl overflow-hidden">
+<div class="px-space-lg py-space-sm bg-surface-container border-b border-surface-container-high flex items-center justify-between">
+<h2 class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-pure-white">Aeronaves Militares Ativas na Frota do CAN</h2>
+<span class="font-code-flight text-label-sm text-primary font-bold px-2.5 py-0.5 rounded bg-surface-container-lowest border border-surface-container-high" id="badge-total-aero">3 Vetores Operacionais</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-lowest/80 text-cadet-gray font-label-sm text-label-sm uppercase tracking-wider border-b border-surface-container-high">
+<th class="py-space-sm px-space-md font-bold" scope="col">Modelo da Aeronave</th>
+<th class="py-space-sm px-space-md font-bold" scope="col">Matrícula FAB</th>
+<th class="py-space-sm px-space-md font-bold text-center" scope="col">Capacidade de Vagas</th>
+<th class="py-space-sm px-space-md font-bold text-right" scope="col">Limite Payload (KG)</th>
+<th class="py-space-sm px-space-md font-bold text-center" scope="col">Esquadrão / Base</th>
+<th class="py-space-sm px-space-md font-bold text-center" scope="col">Status Operacional</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-on-surface" id="tbody-aeronaves">
+<!-- Renderizado dinamicamente -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Formulário de Nova Aeronave -->
+<div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl p-space-lg space-y-space-md">
+<div class="border-b border-surface-container-high pb-space-sm">
+<h2 class="font-headline-sm text-title-md font-bold uppercase tracking-wider text-pure-white">Registrar Nova Aeronave na Frota</h2>
+<p class="font-label-sm text-label-sm text-cadet-gray">Cadastre um novo vetor militar informando matrícula, configuração e capacidade.</p>
+</div>
+<form class="space-y-space-md" id="form-nova-aeronave" onsubmit="salvarNovaAeronave(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Modelo da Aeronave <span class="text-error">*</span></label>
+<input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" id="aero-modelo" placeholder="Ex: KC-390, C-105, C-130" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Matrícula FAB <span class="text-error">*</span></label>
+<input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none uppercase placeholder-cadet-gray" id="aero-matricula" placeholder="Ex: FAB 2855" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Capacidade de Vagas <span class="text-error">*</span></label>
+<input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none" id="aero-vagas" max="250" min="1" placeholder="Ex: 80" required="" type="number"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Limite de Peso / Payload (KG) <span class="text-error">*</span></label>
+<input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none" id="aero-payload" max="60000" min="500" placeholder="Ex: 26000" required="" step="100" type="number"/>
+</div>
+</div>
+<div class="hidden p-space-sm bg-tertiary-container/80 border border-status-operational-green text-tertiary-fixed font-body-md text-body-md rounded" id="aero-feedback-msg"></div>
+<div class="pt-space-sm flex justify-end">
+<button class="px-space-xl py-2.5 bg-primary-container hover:bg-fab-blue-deep text-pure-white font-label-lg text-label-lg font-bold rounded shadow-lg transition-colors uppercase tracking-wider flex items-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Registrar Aeronave</span>
+</button>
+</div>
+</form>
+</div>
+</section>
+<!-- ====================================================== -->
+<!-- TELA 5: PAINEL DO DESPACHANTE (CANONICAL OPS MATCH)    -->
+<!-- ====================================================== -->
+<section class="flex flex-col w-full pb-space-xl space-y-space-lg hidden" id="tela-despachante">
+<div class="flex flex-wrap items-center justify-between gap-space-sm py-space-xs border-b border-surface-container-high/60">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded bg-surface-container-high text-cadet-gray font-label-sm text-label-sm tracking-widest uppercase">CAN-OPS DESPACHO</span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-gold-military tracking-widest uppercase">OPERAÇÃO DE EMBARQUE</span>
+<span class="text-cadet-gray text-[12px]">•</span>
+<span class="font-code-flight text-label-sm text-primary uppercase">DISPATCH-OPS-05</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container-high text-cadet-gray font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-status-operational-green"></span>
+<span>LINK SATÉLITE ROTEADOR: CAN-NET ACTIVE</span>
+</div>
+<span class="font-label-sm text-label-sm text-cadet-gray font-mono">TERMINAL S-02 DESK</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-pure-white tracking-tight">Painel do Despachante &amp; Gestão de Voos</h1>
+<p class="font-body-md text-body-md text-cadet-gray mt-1">Despacho operacional da missão, controle biométrico de presença, no-shows instantâneos e convocação RISAER.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded bg-status-alert-red hover:brightness-110 text-pure-white font-label-lg text-label-lg font-bold flex items-center gap-space-xs shadow-lg shadow-status-alert-red/25 transition-all transform active:scale-95 uppercase tracking-wider" onclick="processarNoShowsEConvocar()">
+<span class="material-symbols-outlined text-[20px]">person_cancel</span>
+<span>Processar No-Shows e Convocar Reservas</span>
+</button>
+</div>
+</div>
+<!-- Master Card do Voo -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-lg shadow-xl border border-surface-container-high relative overflow-hidden">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-md">
+<div class="w-14 h-14 rounded bg-primary-container flex flex-col items-center justify-center text-pure-white shadow-lg">
+<span class="material-symbols-outlined text-[26px]">flight_takeoff</span>
+<span class="font-label-sm text-[10px] font-bold">KC-390</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-pure-white font-bold">CAN-2401</span>
+<span class="px-space-sm py-0.5 rounded bg-surface-container-highest text-gold-military font-code-flight text-label-sm font-bold">FAB 2855</span>
+<div class="flex items-center gap-1.5 px-space-sm py-0.5 rounded bg-status-operational-green/15 text-status-operational-green font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-status-operational-green animate-pulse"></span>
+<span>EMBARQUE INICIADO (PORTÃO 02)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md text-cadet-gray mt-1 font-body-md text-body-md">
+<span class="text-pure-white font-bold font-code-flight">SBBR (BSB) ➔ SBGL (GIG)</span>
+<span>•</span>
+<span>Partida: <strong class="text-pure-white font-code-flight">15:10 BRT (18:15Z)</strong></span>
+<span>•</span>
+<span>Cmt: Ten Cel Av Albuquerque</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Telemetry Row -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm mt-space-md pt-space-md border-t border-surface-container-high/60">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider">Vagas Oferecidas</span>
+<span class="font-code-flight text-headline-sm text-pure-white font-bold">32 Assentos</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-status-operational-green uppercase tracking-wider">Confirmados Portão</span>
+<span class="font-code-flight text-headline-sm text-status-operational-green font-bold" id="stat-titulares-count">6 Confirmados</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-gold-military uppercase tracking-wider">Fila de Reservas</span>
+<span class="font-code-flight text-headline-sm text-gold-military font-bold" id="stat-reservas-count">3 em Espera</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-status-alert-red uppercase tracking-wider">No-Shows Registrados</span>
+<span class="font-code-flight text-headline-sm text-status-alert-red font-bold" id="stat-noshows-count">0 Ocorrências</span>
+</div>
+</div>
+</div>
+<!-- Duas Colunas: Titulares e Reservas -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Coluna 1: Titulares (Esquerda) -->
+<div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl overflow-hidden flex flex-col">
+<div class="px-space-md py-space-sm bg-surface-container border-b border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-status-operational-green animate-pulse"></span>
+<h2 class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-pure-white">Passageiros Titulares Convocados</h2>
+</div>
+<span class="font-code-flight text-label-sm font-bold px-2 py-0.5 rounded bg-tertiary-container text-tertiary-fixed" id="badge-titulares-qty">6 Vagas Ocupadas</span>
+</div>
+<div class="p-space-md flex-1 overflow-y-auto max-h-[500px] space-y-space-sm" id="container-titulares">
+<!-- Renderizado via JS -->
+</div>
+</div>
+<!-- Coluna 2: Reservas (Direita) -->
+<div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-xl overflow-hidden flex flex-col">
+<div class="px-space-md py-space-sm bg-surface-container border-b border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-gold-military animate-pulse"></span>
+<h2 class="font-label-lg text-label-lg font-bold uppercase tracking-wider text-gold-military">Fila de Espera / Reservas (RISAER)</h2>
+</div>
+<span class="font-code-flight text-label-sm font-bold px-2 py-0.5 rounded bg-secondary-container/30 text-gold-military" id="badge-reservas-qty">3 Inscritos</span>
+</div>
+<div class="p-space-md flex-1 overflow-y-auto max-h-[500px] space-y-space-sm" id="container-reservas">
+<!-- Renderizado via JS -->
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- ======================================================== -->
+<!-- TELA 6: MODO TERMINAL (TV DE EXIBIÇÃO PÚBLICA)          -->
+<!-- ======================================================== -->
+<div class="fixed inset-0 w-screen h-screen z-50 bg-primary-container text-pure-white flex flex-col p-6 hidden select-none overflow-hidden" id="tela-modo-tv">
+<header class="flex-none flex items-center justify-between pb-4 border-b border-pure-white/20">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-pure-white rounded flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-primary-container text-[28px]">flight</span>
+</div>
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-md text-headline-md text-pure-white tracking-wider uppercase font-bold">SisCAN • Terminal de Embarque</h1>
+<span class="bg-pure-white/20 text-pure-white font-label-sm text-label-sm font-bold px-2.5 py-0.5 rounded uppercase tracking-widest">Painel FIDS Saguão</span>
+</div>
+<p class="font-label-sm text-label-sm text-pure-white/80 uppercase font-semibold">Correio Aéreo Nacional — Força Aérea Brasileira</p>
+</div>
+</div>
+<div class="flex items-center gap-space-lg">
+<div class="text-right font-mono hidden sm:block">
+<div class="font-label-sm text-[10px] text-pure-white/70 uppercase tracking-widest">Hora Oficial Militar</div>
+<div class="font-code-flight text-code-flight text-pure-white"><span id="tv-clock-brt">22:00:44</span> BRT <span class="text-pure-white/40">|</span> <span class="text-gold-military" id="tv-clock-zulu">01:00:44Z</span></div>
+</div>
+<button class="px-space-md py-1.5 bg-pure-white/10 hover:bg-pure-white hover:text-primary-container border border-pure-white/30 text-pure-white rounded font-label-md text-label-md font-bold transition-all flex items-center gap-space-xs uppercase tracking-wider" onclick="sairDoModoTV()" title="Sair do Modo TV e voltar">
+<span class="material-symbols-outlined text-[18px]">close</span>
+<span>Sair do Modo TV</span>
+</button>
+</div>
+</header>
+<div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6 overflow-hidden">
+<!-- Coluna Esquerda: Voos do Dia -->
+<div class="lg:col-span-4 flex flex-col space-y-4 overflow-hidden">
+<div class="flex items-center justify-between pb-2 border-b border-pure-white/20">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-gold-military text-[20px]">schedule</span>
+<h2 class="font-headline-sm text-title-md font-bold uppercase tracking-wider text-pure-white">Voos Programados</h2>
+</div>
+<span class="font-code-flight text-label-sm text-pure-white/70">Sortidas CAN</span>
+</div>
+<div class="space-y-3 overflow-y-auto pr-1 flex-1">
+<div class="bg-pure-white/10 border-2 border-pure-white rounded-xl p-4 shadow-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-flight text-label-md font-bold bg-pure-white text-primary-container px-2 py-0.5 rounded">CAN-2401</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider bg-status-operational-green text-pure-white px-2.5 py-0.5 rounded flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-pure-white animate-pulse"></span>
+<span>Embarcando</span>
+</span>
+</div>
+<div class="font-headline-sm text-headline-sm font-bold text-pure-white">BSB ➔ GIG (Rio de Janeiro)</div>
+<div class="font-label-sm text-label-sm text-pure-white/80 font-mono mt-1">Aeronave: KC-390 Millennium (FAB 2855)</div>
+<div class="flex items-center justify-between mt-3 pt-2 border-t border-pure-white/20 font-label-md text-label-md font-mono">
+<span>Partida: <strong>18:15Z (15:15 BRT)</strong></span>
+<span>Portão: <strong>02-A</strong></span>
+</div>
+</div>
+<div class="bg-pure-white/5 border border-pure-white/20 rounded-xl p-3.5">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-code-flight text-label-md font-bold text-pure-white">CAN-2402</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider bg-primary/20 text-primary px-2 py-0.5 rounded">No Horário</span>
+</div>
+<div class="font-title-md text-title-md font-bold text-pure-white">BSB ➔ MAO (Manaus)</div>
+<div class="font-label-sm text-label-sm text-pure-white/70 font-mono mt-0.5">Aeronave: C-130 Hércules (FAB 2470)</div>
+<div class="flex items-center justify-between mt-2 pt-2 border-t border-pure-white/10 font-label-md text-label-md font-mono text-pure-white/80">
+<span>Partida: 19:30Z (16:30 BRT)</span>
+<span>Portão: 01</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Coluna Direita: Chamada para Embarque -->
+<div class="lg:col-span-8 flex flex-col space-y-4 overflow-hidden bg-pure-white/5 border border-pure-white/20 rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 border-b border-pure-white/20">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-status-operational-green animate-pulse"></span>
+<h2 class="font-headline-sm text-headline-sm font-bold uppercase tracking-wider text-pure-white">Chamada para Embarque Imediato</h2>
+</div>
+<p class="font-label-sm text-label-sm text-pure-white/80 font-mono mt-0.5">Voo CAN-2401 • Apresentar documento funcional com foto no Portão 02-A</p>
+</div>
+<span class="font-label-sm text-label-sm uppercase font-mono text-gold-military font-bold bg-surface-container-lowest/40 px-3 py-1 rounded border border-gold-military/40">
+          Relação Nominal Homologada
+        </span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="tv-lista-titulares">
+<!-- Dinâmico -->
+</div>
+</div>
+<div class="pt-3 border-t border-pure-white/20 flex items-center justify-between font-label-sm text-label-sm text-pure-white/70 font-mono">
+<span>COMAR • COMGAR • CAN BABR</span>
+<span class="uppercase font-bold text-pure-white">Atenção: Bagagens de mão limitadas a 1 volume de 10 kg</span>
+<span>Atualização em Tempo Real</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- VANILLA JAVASCRIPT STATE AND LOGIC                      -->
+<!-- ======================================================== -->
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- App Logic -->
+    <script src="/js/main.js?v=6"></script>
+
+    <!-- ========== MODAL (GLOBAL) ========== -->
+    <div class="fixed inset-0 z-[1000] bg-surface/80 backdrop-blur-sm hidden flex items-center justify-center p-4" id="modal-overlay">
+        <div class="bg-surface-container-low border border-surface-container-high rounded-xl shadow-2xl w-full max-w-lg flex flex-col overflow-hidden" id="modal">
+            <div class="px-space-lg py-space-sm bg-surface-container border-b border-surface-container-high flex items-center justify-between">
+                <h3 class="font-headline-sm text-lg font-bold text-pure-white uppercase tracking-wider" id="modal-title">Título</h3>
+                <button class="text-cadet-gray hover:text-status-alert-red transition-colors" id="modal-close" onclick="document.getElementById('modal-overlay').classList.add('hidden')">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-space-lg overflow-y-auto max-h-[70vh]" id="modal-body"></div>
+            <div class="px-space-lg py-space-md bg-surface-container border-t border-surface-container-high flex justify-end gap-space-sm">
+                <button class="px-space-md py-2 rounded text-cadet-gray hover:bg-surface-container-high transition-colors font-bold uppercase text-sm" id="modal-cancel" onclick="document.getElementById('modal-overlay').classList.add('hidden')">Cancelar</button>
+                <button class="px-space-md py-2 rounded bg-primary-container text-pure-white hover:bg-fab-blue-deep transition-colors font-bold uppercase text-sm shadow" id="modal-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</body></html>
