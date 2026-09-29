@@ -457,11 +457,20 @@ const SisCAN = (() => {
                             placeholder="6849120" inputmode="numeric" oninput="this.value = this.value.replace(/\\D/g, '')">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1 font-bold">Base / Organização Militar</label>
-                    <input type="text" id="edit-admin-om" value="${admin.organizacao || ''}" 
-                        class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray"
-                        placeholder="BABR - Base Aérea de Brasília">
+                <div class="grid grid-cols-2 gap-space-sm mt-space-sm">
+                    <div class="form-group">
+                        <label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1 font-bold">Base / Organização Militar</label>
+                        <input type="text" id="edit-admin-om" value="${admin.organizacao || ''}" 
+                            class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder-cadet-gray"
+                            placeholder="BABR - Base Aérea de Brasília">
+                    </div>
+                    <div class="form-group">
+                        <label class="block font-label-sm text-label-sm text-cadet-gray uppercase tracking-wider mb-1 font-bold">Nível / Perfil</label>
+                        <select id="edit-admin-perfil" class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                            <option value="admin" ${admin.perfil === 'admin' ? 'selected' : ''}>ADMIN</option>
+                            <option value="root" ${admin.perfil === 'root' ? 'selected' : ''}>ROOT</option>
+                        </select>
+                    </div>
                 </div>` : '';
 
         DOM.modalTitle().textContent = isRoot ? 'Editar Perfil Completo' : 'Editar Meu Perfil';
@@ -539,16 +548,39 @@ const SisCAN = (() => {
             }
 
             // Se ROOT, incluir campos extras
+            let isTransferringRoot = false;
             if (isRoot) {
                 const emailEl = document.getElementById('edit-admin-email');
                 const saramEl = document.getElementById('edit-admin-saram');
                 const omEl = document.getElementById('edit-admin-om');
+                const perfilEl = document.getElementById('edit-admin-perfil');
+                
                 if (emailEl) updatePayload.email = emailEl.value.trim() || null;
                 if (saramEl) updatePayload.saram = saramEl.value.trim() || null;
                 if (omEl) updatePayload.organizacao = omEl.value.trim() || null;
+                
+                if (perfilEl) {
+                    const newPerfil = perfilEl.value;
+                    if (newPerfil === 'root' && admin.perfil !== 'root') {
+                        isTransferringRoot = true;
+                        updatePayload.perfil = 'root';
+                    } else if (newPerfil === 'admin' && admin.perfil === 'root') {
+                        showToast('Você não pode remover o ROOT de si mesmo. Para sair do cargo, transfira o ROOT editando o perfil de outro usuário.', 'warning');
+                        return;
+                    }
+                }
             }
 
             try {
+                if (isTransferringRoot) {
+                    // Rebaixar o root atual (usuário logado) para admin
+                    const { error: demoteError } = await supabase
+                        .from('usuarios_admin')
+                        .update({ perfil: 'admin' })
+                        .eq('id', currentUser.id);
+                    if (demoteError) throw demoteError;
+                }
+
                 const { error } = await supabase
                     .from('usuarios_admin')
                     .update(updatePayload)
@@ -574,7 +606,16 @@ const SisCAN = (() => {
                     senha_alterada: !!novaSenha,
                     executado_por: currentUser.nome,
                 };
-                showToast('Perfil atualizado com sucesso!', 'success');
+
+                if (isTransferringRoot) {
+                    currentUser.perfil = 'admin';
+                    sessionStorage.setItem('siscan_user', JSON.stringify(currentUser));
+                    DOM.userRole().textContent = 'admin';
+                    showToast('Perfil atualizado. Privilégios de ROOT transferidos com sucesso!', 'success');
+                } else {
+                    showToast('Perfil atualizado com sucesso!', 'success');
+                }
+                
                 await logAction('EDIT_ADMIN_PROFILE', logDetails);
                 hideModal();
                 loadAdmins();
@@ -1037,11 +1078,15 @@ const SisCAN = (() => {
 
     function showModal(onConfirm) {
         modalCallback = onConfirm;
+        DOM.modalOverlay().classList.remove('hidden');
         DOM.modalOverlay().classList.add('visible');
     }
 
     function hideModal() {
         DOM.modalOverlay().classList.remove('visible');
+        setTimeout(() => {
+            DOM.modalOverlay().classList.add('hidden');
+        }, 300);
         modalCallback = null;
     }
 
