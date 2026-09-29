@@ -266,95 +266,8 @@
         </span>
 </div>
 <!-- Lista de Voos do Dia -->
-<div class="flex-1 flex flex-col space-y-space-md justify-between">
-<!-- CARD 1: VOO ATIVO EMBARCANDO (CAN-2401 GIG) -->
-<div class="bg-primary-container p-space-md rounded-sm shadow-xl relative overflow-hidden transition-all duration-300">
-<div class="absolute -right-6 -bottom-6 opacity-15">
-<span class="material-symbols-outlined text-pure-white" style="font-size: 140px;">flight</span>
-</div>
-<div class="flex items-start justify-between relative z-10">
-<div>
-<span class="font-code-flight text-headline-sm text-secondary font-bold tracking-widest block">CAN-2401</span>
-<h3 class="font-display-tv text-headline-md text-pure-white font-bold tracking-tight">GIG • RIO DE JANEIRO</h3>
-<p class="font-title-md text-title-md text-on-surface-variant font-medium">Aeronave C-390 Millennium</p>
-</div>
-<div class="text-right">
-<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase block">Partida</span>
-<span class="font-code-flight text-headline-md text-pure-white font-bold">15:10</span>
-</div>
-</div>
-<!-- Badge de Status Embarcando -->
-<div class="mt-space-md flex items-center justify-between pt-space-xs relative z-10">
-<span class="font-label-md text-label-md text-pure-white uppercase font-bold tracking-wider">Portão 01</span>
-<div class="flex items-center space-x-space-xs bg-status-operational-green px-space-md py-1 rounded-sm shadow-lg animate-pulse">
-<span class="h-3 w-3 rounded-full bg-pure-white"></span>
-<span class="font-label-lg text-label-lg text-surface-container-lowest font-black tracking-widest uppercase">EMBARCANDO</span>
-</div>
-</div>
-</div>
-<!-- CARD 2: VOO CHECK-IN ABERTO (CAN-2402 MAO) -->
-<div class="bg-fab-blue-surface p-space-md rounded-sm shadow-md relative overflow-hidden">
-<div class="flex items-start justify-between">
-<div>
-<span class="font-code-flight text-title-md text-secondary font-bold tracking-widest block">CAN-2402</span>
-<h3 class="font-headline-sm text-headline-sm text-pure-white font-bold tracking-tight">MAO • MANAUS</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Aeronave C-130 Hércules</p>
-</div>
-<div class="text-right">
-<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase block">Partida</span>
-<span class="font-code-flight text-title-md text-pure-white font-bold">16:30</span>
-</div>
-</div>
-<!-- Badge Check-in Aberto -->
-<div class="mt-space-sm flex items-center justify-between pt-space-xs">
-<span class="font-label-md text-label-md text-cadet-gray uppercase font-bold">Portão 02</span>
-<div class="flex items-center space-x-1.5 bg-status-amber-waiting px-space-md py-1 rounded-sm shadow">
-<span class="font-label-lg text-label-lg text-surface-container-lowest font-black tracking-widest uppercase">CHECK-IN ABERTO</span>
-</div>
-</div>
-</div>
-<!-- CARD 3: VOO NO HORÁRIO (CAN-2405 REC) -->
-<div class="bg-fab-blue-surface p-space-md rounded-sm shadow-md relative overflow-hidden">
-<div class="flex items-start justify-between">
-<div>
-<span class="font-code-flight text-title-md text-secondary font-bold tracking-widest block">CAN-2405</span>
-<h3 class="font-headline-sm text-headline-sm text-pure-white font-bold tracking-tight">REC • RECIFE</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Aeronave C-99A</p>
-</div>
-<div class="text-right">
-<span class="font-label-sm text-label-sm text-cadet-gray tracking-widest uppercase block">Partida</span>
-<span class="font-code-flight text-title-md text-pure-white font-bold">13:15</span>
-</div>
-</div>
-<!-- Badge No Horário -->
-<div class="mt-space-sm flex items-center justify-between pt-space-xs">
-<span class="font-label-md text-label-md text-cadet-gray uppercase font-bold">Portão 01</span>
-<div class="flex items-center space-x-1.5 bg-primary-container px-space-md py-1 rounded-sm shadow">
-<span class="font-label-lg text-label-lg text-pure-white font-black tracking-widest uppercase">NO HORÁRIO</span>
-</div>
-</div>
-</div>
-<!-- CARD 4: VOO FECHADO (CAN-2388 BVB) -->
-<div class="bg-surface-container-low opacity-80 p-space-md rounded-sm shadow-md relative overflow-hidden">
-<div class="flex items-start justify-between">
-<div>
-<span class="font-code-flight text-title-md text-outline font-bold tracking-widest block">CAN-2388</span>
-<h3 class="font-headline-sm text-headline-sm text-outline-variant font-bold tracking-tight">BVB • BOA VISTA</h3>
-<p class="font-body-md text-body-md text-outline">Aeronave C-105 Amazonas</p>
-</div>
-<div class="text-right">
-<span class="font-label-sm text-label-sm text-outline tracking-widest uppercase block">Partida</span>
-<span class="font-code-flight text-title-md text-outline font-bold">06:00</span>
-</div>
-</div>
-<!-- Badge Fechado -->
-<div class="mt-space-sm flex items-center justify-between pt-space-xs">
-<span class="font-label-md text-label-md text-outline uppercase font-bold">Encerrado</span>
-<div class="flex items-center space-x-1.5 bg-status-closed-slate px-space-md py-1 rounded-sm shadow">
-<span class="font-label-lg text-label-lg text-pure-white font-black tracking-widest uppercase">FECHADO</span>
-</div>
-</div>
-</div>
+<div class="flex-1 flex flex-col space-y-space-md justify-between" id="tv-voos-lista">
+    <!-- Lista de Voos Dinâmica (Populada via tv.js) -->
 </div>
 </section>
 <!-- COLUNA DIREITA: CHAMADA PARA EMBARQUE IMEDIATO E MANIFESTO (65%) -->
@@ -385,19 +298,19 @@
 <div class="flex flex-col mb-space-sm md:mb-0">
 <span class="font-label-md text-label-md text-secondary uppercase font-bold tracking-widest">Voo em Convocação Nominal</span>
 <div class="flex items-center space-x-space-md mt-1">
-<span class="font-code-flight text-headline-lg text-secondary font-black tracking-widest">CAN-2401</span>
-<span class="text-headline-md text-pure-white font-bold">BRASÍLIA (BSB) ➔ RIO DE JANEIRO (GIG)</span>
+<span class="font-code-flight text-headline-lg text-secondary font-black tracking-widest" id="tv-voo-codigo">--</span>
+<span class="text-headline-md text-pure-white font-bold" id="tv-voo-destino">AGUARDANDO...</span>
 </div>
 </div>
 <div class="flex items-center space-x-space-lg bg-surface-container-lowest px-space-lg py-space-sm rounded-sm">
 <div class="text-center">
 <span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-widest block font-bold">PORTÃO</span>
-<span class="font-display-tv text-headline-lg text-status-operational-green font-black leading-none">01</span>
+<span class="font-display-tv text-headline-lg text-status-operational-green font-black leading-none" id="tv-voo-portao">--</span>
 </div>
 <div class="text-left pl-space-sm">
 <span class="font-label-sm text-label-sm text-cadet-gray uppercase tracking-widest block font-bold">AERONAVE / ETD</span>
-<span class="font-code-flight text-title-md text-pure-white font-bold block">C-390 MILLENNIUM</span>
-<span class="font-code-flight text-label-lg text-secondary font-bold">15:10 BRT <span class="text-cadet-gray text-label-sm font-normal">(18:10Z)</span></span>
+<span class="font-code-flight text-title-md text-pure-white font-bold block" id="tv-voo-aeronave">--</span>
+<span class="font-code-flight text-label-lg text-secondary font-bold" id="tv-voo-partida">--:-- BRT <span class="text-cadet-gray text-label-sm font-normal">(--:--Z)</span></span>
 </div>
 </div>
 </div>
@@ -424,107 +337,8 @@
 </div>
 </div>
 <!-- Grade de Passageiros em Alto Contraste (Legível a > 10 metros) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm flex-1 overflow-hidden">
-<!-- ITEM 1 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CEL AV</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">MARCOS PONTES</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 2 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">MAJ INT</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">CARVALHO</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 3 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">1º TEN MED</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">VALÉRIA SILVA</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 4 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">1º SGT BMA</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">SOUZA FILHO</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 5 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">SO BCO</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">NOGUEIRA</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 6 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CB BMT</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">LIMA JÚNIOR</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 7 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CIVIL</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">DR. MARCOS VINICIUS COSTA</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 8 -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">CAP AV</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">EDUARDO TEIXEIRA</span>
-</div>
-<span class="bg-status-operational-green text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              TITULAR
-            </span>
-</div>
-<!-- ITEM 9: RESERVA CONVOCADO -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md ring-1 ring-status-amber-waiting/40">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">2º SGT SGS</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">FERREIRA GOMES</span>
-</div>
-<span class="bg-status-amber-waiting text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              RESERVA CONVOCADO
-            </span>
-</div>
-<!-- ITEM 10: RESERVA CONVOCADO -->
-<div class="bg-fab-blue-surface p-space-sm rounded-sm flex items-center justify-between shadow-md ring-1 ring-status-amber-waiting/40">
-<div class="flex items-center space-x-space-sm min-w-0">
-<span class="font-code-flight text-title-md text-secondary font-bold w-24 shrink-0">3º SGT BCT</span>
-<span class="font-headline-sm text-headline-sm text-pure-white font-bold truncate">ALINE MEDEIROS</span>
-</div>
-<span class="bg-status-amber-waiting text-surface-container-lowest font-black font-label-md text-label-md px-space-md py-1 rounded-sm shrink-0 tracking-wider">
-              RESERVA CONVOCADO
-            </span>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm flex-1 overflow-hidden" id="tv-passageiros-lista">
+    <!-- Lista Dinâmica de Passageiros (Populada via tv.js) -->
 </div>
 <!-- Instruções de Bagagem e Identificação -->
 <div class="mt-space-sm pt-space-xs bg-fab-blue-surface px-space-md py-space-xs rounded-sm flex items-center justify-between text-cadet-gray font-label-md text-label-md">
@@ -598,6 +412,8 @@
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/tv.js"></script>
 <script>
     document.getElementById('btn-exit-tv').addEventListener('click', () => {
         window.location.href = '/';
