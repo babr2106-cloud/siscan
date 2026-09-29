@@ -96,12 +96,16 @@ const SisCAN = (() => {
                 .single();
 
             if (error || !data) {
-                // Modo de demonstração: permitir acesso sem banco configurado
-                currentUser = { nome: nome, perfil: 'admin' };
-                showToast('Modo demonstração: banco não conectado.', 'warning');
-            } else {
-                currentUser = data;
+                showToast('Usuário não encontrado. Digite o nome completo.', 'error');
+                return;
             }
+
+            if (data.senha && data.senha !== senha) {
+                showToast('Senha incorreta.', 'error');
+                return;
+            }
+
+            currentUser = data;
 
             // Salva na sessão
             sessionStorage.setItem('siscan_user', JSON.stringify(currentUser));
