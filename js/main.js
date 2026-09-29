@@ -628,27 +628,47 @@ const SisCAN = (() => {
 
     async function loadPassageiros() {
         const { data, error } = await supabase.from('passageiros').select('*').order('nome_completo');
-        const tbody = document.getElementById('passageiros-table');
+        const listContainer = document.getElementById('lista-passageiros-lateral');
+        const badge = document.getElementById('badge-total-pax');
+        
         if (error || !data || data.length === 0) {
-            tbody.innerHTML = `<tr class="empty-row"><td colspan="7"><div class="empty-state-inline"><i class="fas fa-users-slash"></i><span>Nenhum passageiro cadastrado</span></div></td></tr>`;
+            if (listContainer) {
+                listContainer.innerHTML = `
+                    <div class="p-space-md text-cadet-gray text-center font-body-md text-sm flex flex-col items-center justify-center h-full">
+                        <span class="material-symbols-outlined text-4xl mb-2 opacity-50">group_off</span>
+                        <span>Nenhum passageiro cadastrado</span>
+                    </div>`;
+            }
+            if (badge) badge.textContent = `-- Cadastrados`;
             return;
         }
-        tbody.innerHTML = data.map(p => `
-            <tr>
-                <td><strong>${p.nome_completo}</strong></td>
-                <td>${formatCPF(p.cpf)}</td>
-                <td>${p.posto_graduacao || '—'}</td>
-                <td>${p.saram || '—'}</td>
-                <td>${p.peso_kg} kg</td>
-                <td>${p.email}</td>
-                <td>
-                    <div class="action-btns">
-                        <button class="btn btn-icon btn-ghost" onclick="SisCAN.editPassageiro('${p.id}')" title="Editar"><i class="fas fa-pen"></i></button>
-                        <button class="btn btn-icon btn-danger" onclick="SisCAN.deletePassageiro('${p.id}')" title="Excluir"><i class="fas fa-trash"></i></button>
+
+        if (badge) badge.textContent = `${data.length.toString().padStart(2, '0')} Cadastrados`;
+
+        if (listContainer) {
+            listContainer.innerHTML = data.map(p => `
+                <div class="p-space-sm hover:bg-surface-container-highest transition-colors cursor-pointer group flex items-center justify-between" onclick="SisCAN.editPassageiro('${p.id}')">
+                    <div class="flex items-center gap-space-sm overflow-hidden">
+                        <div class="w-8 h-8 rounded-full bg-primary-container text-pure-white flex items-center justify-center font-bold text-[12px] shrink-0 border border-primary/30">
+                            ${p.nome_completo.substring(0, 2).toUpperCase()}
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-body-md text-sm font-bold text-pure-white truncate" title="${p.nome_completo}">${p.nome_completo}</p>
+                            <div class="flex items-center gap-2 mt-0.5 text-[11px] text-cadet-gray">
+                                <span class="font-code-flight">${formatCPF(p.cpf)}</span>
+                                <span>•</span>
+                                <span class="truncate">${p.posto_graduacao || '—'}</span>
+                            </div>
+                        </div>
                     </div>
-                </td>
-            </tr>
-        `).join('');
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="w-7 h-7 flex items-center justify-center rounded text-pure-white bg-status-danger hover:bg-status-danger/80 transition-colors" onclick="event.stopPropagation(); SisCAN.deletePassageiro('${p.id}')" title="Excluir">
+                            <span class="material-symbols-outlined text-[14px]">delete</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
     }
 
     async function loadInscricoes() {
