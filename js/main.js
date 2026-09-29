@@ -1268,7 +1268,7 @@ const SisCAN = (() => {
     const salvarNovoPassageiro = async (e) => {
         e.preventDefault();
         const payload = {
-            cpf: document.getElementById('pax-cpf').value.trim(),
+            cpf: document.getElementById('pax-cpf').value.replace(/\D/g, ''),
             nome_completo: document.getElementById('pax-nome').value.trim(),
             posto_graduacao: document.getElementById('pax-posto').value,
             peso_kg: parseInt(document.getElementById('pax-peso').value, 10),
