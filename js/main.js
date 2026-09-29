@@ -1271,8 +1271,9 @@ const SisCAN = (() => {
             cpf: document.getElementById('pax-cpf').value.trim(),
             nome_completo: document.getElementById('pax-nome').value.trim(),
             posto_graduacao: document.getElementById('pax-posto').value,
-            peso_corporal_kg: parseInt(document.getElementById('pax-peso').value, 10),
-            tipo_sanguineo: document.getElementById('pax-sangue').value,
+            peso_kg: parseInt(document.getElementById('pax-peso').value, 10),
+            email: document.getElementById('pax-email').value.trim(),
+            telefone: document.getElementById('pax-telefone').value.trim()
         };
 
         try {
@@ -1280,7 +1281,7 @@ const SisCAN = (() => {
             if (error) throw error;
             showToast('Passageiro cadastrado com sucesso!', 'success');
             document.getElementById('form-novo-passageiro').reset();
-            loadSectionData('tela-passageiros');
+            loadSectionData('passageiros');
         } catch (err) {
             console.error(err);
             showToast('Erro ao cadastrar passageiro: ' + err.message, 'error');
@@ -1291,9 +1292,9 @@ const SisCAN = (() => {
         e.preventDefault();
         const payload = {
             modelo: document.getElementById('aero-modelo').value.trim(),
-            matricula: document.getElementById('aero-matricula').value.trim().toUpperCase(),
-            capacidade_vagas: parseInt(document.getElementById('aero-vagas').value, 10),
-            limite_peso_kg: parseFloat(document.getElementById('aero-payload').value),
+            matricula_fab: document.getElementById('aero-matricula').value.trim().toUpperCase(),
+            capacidade_pax: parseInt(document.getElementById('aero-vagas').value, 10),
+            payload_max_kg: parseFloat(document.getElementById('aero-payload').value),
             status: 'pronto'
         };
 
@@ -1302,7 +1303,7 @@ const SisCAN = (() => {
             if (error) throw error;
             showToast('Aeronave registrada com sucesso!', 'success');
             document.getElementById('form-nova-aeronave').reset();
-            loadSectionData('tela-aeronaves');
+            loadSectionData('aeronaves');
         } catch (err) {
             console.error(err);
             showToast('Erro ao registrar aeronave: ' + err.message, 'error');
@@ -1361,7 +1362,7 @@ window.fecharModalAdmin = () => {
 
 window.salvarNovoAdmin = SisCAN.salvarNovoAdmin;
 window.salvarNovoPassageiro = SisCAN.salvarNovoPassageiro;
-window.salvarNovoAeronave = SisCAN.salvarNovaAeronave;
+window.salvarNovaAeronave = SisCAN.salvarNovaAeronave;
 window.deleteAdmin = SisCAN.deleteAdmin;
 window.changeAdminPassword = SisCAN.changeAdminPassword;
 window.editAdminProfile = SisCAN.editAdminProfile;
