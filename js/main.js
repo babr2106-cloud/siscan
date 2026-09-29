@@ -786,38 +786,38 @@ const SisCAN = (() => {
     function openPassageiroModal(passageiro = null) {
         DOM.modalTitle().textContent = passageiro ? 'Editar Passageiro' : 'Novo Passageiro';
         DOM.modalBody().innerHTML = `
-            <div class="form-group">
-                <label>Nome Completo</label>
-                <input type="text" id="form-nome" value="${passageiro?.nome_completo || ''}" placeholder="Nome completo" required>
+            <div class="mb-space-md">
+                <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Nome Completo</label>
+                <input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="text" id="form-nome" value="${passageiro?.nome_completo || ''}" placeholder="Nome completo" required>
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>CPF (somente números)</label>
-                    <input type="text" id="form-cpf" value="${passageiro?.cpf || ''}" maxlength="11" placeholder="00000000000">
+            <div class="grid grid-cols-2 gap-space-md mb-space-md">
+                <div>
+                    <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">CPF (somente números)</label>
+                    <input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="text" id="form-cpf" value="${passageiro?.cpf || ''}" maxlength="11" placeholder="00000000000">
                 </div>
-                <div class="form-group">
-                    <label>SARAM</label>
-                    <input type="text" id="form-saram" value="${passageiro?.saram || ''}" placeholder="Opcional">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Posto/Graduação</label>
-                    <input type="text" id="form-posto" value="${passageiro?.posto_graduacao || ''}" placeholder="Ex: Capitão">
-                </div>
-                <div class="form-group">
-                    <label>Peso (kg)</label>
-                    <input type="number" id="form-peso" value="${passageiro?.peso_kg || ''}" step="0.1" min="1" placeholder="80.5">
+                <div>
+                    <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">SARAM</label>
+                    <input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="text" id="form-saram" value="${passageiro?.saram || ''}" placeholder="Opcional">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" id="form-email" value="${passageiro?.email || ''}" placeholder="email@fab.mil.br">
+            <div class="grid grid-cols-2 gap-space-md mb-space-md">
+                <div>
+                    <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Posto/Graduação</label>
+                    <input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="text" id="form-posto" value="${passageiro?.posto_graduacao || ''}" placeholder="Ex: Capitão">
                 </div>
-                <div class="form-group">
-                    <label>Telefone</label>
-                    <input type="tel" id="form-telefone" value="${passageiro?.telefone || ''}" placeholder="(61) 99999-0000">
+                <div>
+                    <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Peso (kg)</label>
+                    <input class="w-full font-code-flight text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="number" id="form-peso" value="${passageiro?.peso_kg || ''}" step="0.1" min="1" placeholder="80.5">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-space-md mb-space-md">
+                <div>
+                    <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">E-mail</label>
+                    <input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="email" id="form-email" value="${passageiro?.email || ''}" placeholder="email@fab.mil.br">
+                </div>
+                <div>
+                    <label class="block font-label-sm text-label-sm font-bold text-cadet-gray uppercase tracking-wider mb-1">Telefone</label>
+                    <input class="w-full text-body-md px-3 py-2 bg-surface border border-surface-container-high text-pure-white rounded focus:border-primary outline-none placeholder-cadet-gray" type="tel" id="form-telefone" value="${passageiro?.telefone || ''}" placeholder="(61) 99999-0000">
                 </div>
             </div>
         `;
